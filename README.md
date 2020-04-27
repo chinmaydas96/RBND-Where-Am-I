@@ -17,7 +17,7 @@ Rviz with map, localization and path planning:
 
 ### Clone repo as catkin_ws, initialize workspace and build
 ```
-$ git clone https://github.com/civcode/RobotND-P3-Where-Am-I.git catkin_ws
+$ git clone https://github.com/chinmaydas96/RBND-Where-Am-I.git catkin_ws
 $ cd catkin_ws/src 
 $ catkin_init_workspace
 $ cd .. && catkin_make
