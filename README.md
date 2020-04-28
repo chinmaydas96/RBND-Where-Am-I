@@ -1,36 +1,46 @@
-# Robotic Software Engineer ND 
-## Project 3: Where Am I
+# Udacity : Where am I? project
 
-[image1]: ./img/RobotND-Project3-Gazebo-World.png  " "
-[image2]: ./img/RobotND-Project3-AMCL-Gazebo.gif  " "
+## Setup
 
+Clone the repo, and rename the top directory to catkin_ws, so that you have the top folder structure:
 
-Simple ROS/Gazebo project for localization and path planning with the ROS packages AMCL (Adaptive Monte Carlo Localization) and move_base.
+> workspace -  
+&nbsp;&nbsp;  -catkin_ws  
+&nbsp;&nbsp; &nbsp;&nbsp;     -build  
+&nbsp;&nbsp; &nbsp;&nbsp;     -devel  
+&nbsp;&nbsp; &nbsp;&nbsp;     -src  
+&nbsp;&nbsp; &nbsp;&nbsp;     -screenshots
 
-Gazebo world with mobile robot:
-![][image1]
+In order to run, open 3 terminals and source ros in each. (source devel/setup.bash)
 
-Rviz with map, localization and path planning:
-![][image2]
+### In terminal 1:
 
-## How To Use
+launch gazebo, Rviz and spawn a robot.
 
-### Clone repo as catkin_ws, initialize workspace and build
-```
-$ git clone https://github.com/chinmaydas96/RBND-Where-Am-I.git catkin_ws
-$ cd catkin_ws/src 
-$ catkin_init_workspace
-$ cd .. && catkin_make
-```
+> roslaunch my_robot midworld.launch
 
-### Launch ROS and Gazebo
-```
-$ source devel/setup.bash
-$ roslaunch my_robot world.launch
-```
+This will run the launch file for a medium sized world.
+Also included are launch files for a larger world ("biggerworld.launch"). Note that if this is used the amcl.launch file needs to be updated to reflect the biggerworld.map
 
-### Launch ROS AMCL and move_base
-```
-$ source devel/setup.bash
-$ roslaunch my_robot amcl.launch
-```
+### In terminal 2:
+
+> roslaunch my_robot amcl.launch
+
+to launch the map server and amcl
+
+### In terminal 3:
+
+> rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+
+## Results
+
+The robot is able to locals quickly. The main parameters I adjusted were the min and max particles.
+
+>"min_particles" value="5"  
+"max_particles" value="500"  
+
+#### Initial State
+![Alt text](/screenshots/initial-not_localised.png?raw=true "Initial State")
+
+#### Localised
+![Alt text](/screenshots/localised.png?raw=true "Localised")
